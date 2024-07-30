@@ -1,0 +1,46 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Arial', sans-serif;
+}
+.dashboard-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #343a40;
+}
+.profile-picture {
+    display: block;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+.user-info p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+.btn-group .btn {
+    width: 100%;
+}
+.btn-primary, .btn-success, .btn-secondary {
+    width: 100%;
+    margin-bottom: 10px;
+}
+.btn-primary:hover, .btn-success:hover, .btn-secondary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
