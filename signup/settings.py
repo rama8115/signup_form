@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'testapp',
+    'blog',
 ]
 
 MIDDLEWARE = [
@@ -76,12 +77,23 @@ WSGI_APPLICATION = 'signup.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.mysql",
+#         "NAME": "my_data",
+#         "USER": "root",
+#         "PASSWWORD": "",
+#         "HOST": "localhost",
+#         "PORT": 3306,
+#     }
+# }
 
 
 # Password validation
@@ -134,3 +146,13 @@ AUTH_USER_MODEL = 'testapp.CustomUser'
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+import os
+import dj_database_url
+
+DATABASES = {
+    'default': dj_database_url.config(
+        default=os.getenv('DATABASE_URL', 'mysql://rama9305:Rama%40123@rama9305.mysql.pythonanywhere-services.com:3306/rama9305$default')
+    )
+}
+

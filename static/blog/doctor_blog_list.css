@@ -1,0 +1,37 @@
+body {
+    background-color: #f8f9fa;
+}
+.navbar {
+    background-color: #007bff;
+}
+.navbar-nav .nav-link {
+    color: white !important;
+}
+.card {
+    border: 1px solid #007bff;
+    margin-bottom: 1.5rem;
+}
+.card-title {
+    color: #007bff;
+    font-weight: bold;
+}
+.summary-heading, .content-heading {
+    color: #28a745;
+    font-weight: bold;
+}
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+.btn-outline-primary {
+    color: #007bff;
+    border-color: #007bff;
+}
+.btn-outline-primary:hover {
+    background-color: #007bff;
+    color: white;
+}
+.alert-warning {
+    background-color: #ffc107;
+    color: #856404;
+}

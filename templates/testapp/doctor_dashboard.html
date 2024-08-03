@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doctor Dashboard</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-   <link rel="stylesheet" href="{% static 'doctor.css' %}">
+    <link rel="stylesheet" href="{% static 'testapp/doctor.css' %}">
 </head>
 <body>
     <div class="container">
@@ -21,6 +21,8 @@
             </div>
             <div class="btn-group">
                 <a href="/users/logout" class="btn btn-secondary">Logout</a>
+                <a href="/blog/doctor_blog_list" class="btn btn-primary">View Blog</a>
+                <a href="{% url 'create_blog_post' %}" class="btn btn-success">Create New Blog</a>
             </div>
         </div>
     </div>

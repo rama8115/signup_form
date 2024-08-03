@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patient Dashboard</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'patient.css' %}">
+    <link rel="stylesheet" href="{% static 'testapp/patient.css' %}">
+   
 </head>
 <body>
     <div class="container">
@@ -20,7 +21,8 @@
                 <p><strong>Address:</strong> {{ user.address_line1 }}, {{ user.city }}, {{ user.state }} - {{ user.pincode }}</p>
             </div>
             <div class="btn-group">
-                <a class="btn btn-primary" href="/users/logout">Logout</a>
+                <a class="btn btn-danger" href="/users/logout">Logout</a>
+                <a class="btn btn-primary" href="/blog/patient_blog_list">Read Blog</a>
             </div>
         </div>
     </div>

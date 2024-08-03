@@ -4,22 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Blog Categories</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-   <link rel="stylesheet" href="{% static 'testapp/login.css' %}">
+    <link rel="stylesheet" href="{% static '/blog/patient_blog_list.css' %}">
 </head>
 <body>
+    <div class="d-flex justify-content-end p-3">
+        <a href="/users/logout" class="btn btn-primary">Logout</a>
+    </div>
     <div class="container">
-        <div class="login-container">
-            <h2 class="login-header">Login</h2>
-            <form method="POST">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="btn btn-primary">Login</button>
-            </form>
-            <div class="signup-link">
-                <span>Don't have an account? </span><a href="/">Signup</a>
-            </div>
+        <h2 class="header">Blog Categories</h2>
+        <div class="list-group">
+            {% for category in categories %}
+            <a href="{% url 'patient_blog_category' category.id %}" class="list-group-item list-group-item-action">{{ category.name }}</a>
+            {% endfor %}
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

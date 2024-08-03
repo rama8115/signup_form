@@ -6,13 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-   <link rel="stylesheet" href="{% static 'signup.css' %}">
+    <link rel="stylesheet" href="{% static 'testapp/signup.css' %}">
 </head>
 <body>
     <div class="container">
         <div class="signup-container">
             <h2 class="signup-header">Create Your Account</h2>
-            <form method="POST" enctype="multipart/form-data">
+
+            <!-- Alert for invalid input -->
+            <div id="error-alert" class="alert alert-danger" role="alert">
+                <span id="error-message">Please correct the errors below and try again.</span>
+            </div>
+
+            <form id="signup-form" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="userType">User type</label>
@@ -72,5 +78,37 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        document.getElementById('signup-form').addEventListener('submit', function(event) {
+            var isValid = validateForm();
+            
+            if (!isValid) {
+                event.preventDefault(); // Prevent form submission
+                document.getElementById('error-alert').style.display = 'block'; // Show alert
+            }
+        });
+
+        function validateForm() {
+            var password1 = document.getElementById('id_password1').value;
+            var password2 = document.getElementById('id_password2').value;
+            var errorMessage = "";
+
+            if (password1 !== password2) {
+                errorMessage += "Passwords do not match. ";
+            }
+
+            if (password1.length < 8) {
+                errorMessage += "Password must be at least 8 characters long. ";
+            }
+
+            if (errorMessage) {
+                document.getElementById('error-message').textContent = errorMessage;
+                return false;
+            }
+
+            return true;
+        }
+    </script>
 </body>
 </html>

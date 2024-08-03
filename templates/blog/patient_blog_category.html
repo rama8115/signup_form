@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ category.name }} Posts</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'blog/patient_blog_category.css' %}">
+</head>
+<body>
+    <div class="logout-button">
+        <a href="/users/logout" class="btn btn-primary">Logout</a>
+    </div>
+    {% if blog_posts %}
+    <div class="container">
+        <h2 class="header">{{ category.name }} Posts</h2>
+        <div class="list-group">
+            {% for post in blog_posts %}
+            <div class="post-item">
+                <div class="post-image">
+                    <img src="{{ post.image.url }}" alt="{{ post.title }}">
+                </div>
+                <div class="post-content">
+                    <h5 class="post-title">{{ post.title }}</h5>
+                    <p class="post-summary">{{ post.summary|truncatewords:15 }}</p>
+                    <p class="post-date">{{ post.date }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% else %}
+    <div class="no-posts">
+        <h4>No Blogs Available</h4>
+    </div>
+    {% endif %}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
