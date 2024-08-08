@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctors List</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'appointment/doctor_list.css' %}">
+</head>
+<body>
+    <div class="d-flex flex-row-reverse p-3">
+        <a href="/users/logout" class="btn btn-primary">Logout</a>
+    </div>
+    <div class="container">
+        <h2>Doctors List</h2>
+        <div class="list-group">
+            {% for doctor in doctors %}
+            <div class="list-group-item">
+                <img src="{{ doctor.profile_picture.url }}" class="img-thumbnail" alt="{{ doctor.first_name }} {{ doctor.last_name }}">
+                <div>
+                    <h5>{{ doctor.first_name }} {{ doctor.last_name }}</h5>
+                    <p class="text-muted">{{ doctor.specialization }}</p>
+                </div>
+                <a href="{% url 'book_appointment' doctor.id %}" class="btn btn-primary">Book Appointment</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcd.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

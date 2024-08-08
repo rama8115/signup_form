@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'testapp',
     'blog',
+    'appointment',
 ]
 
 MIDDLEWARE = [
@@ -77,12 +78,12 @@ WSGI_APPLICATION = 'signup.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 # DATABASES = {
 #     "default": {
@@ -150,9 +151,20 @@ LOGOUT_REDIRECT_URL = '/'
 import os
 import dj_database_url
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default=os.getenv('DATABASE_URL', 'mysql://rama9305:Rama%40123@rama9305.mysql.pythonanywhere-services.com:3306/rama9305$default')
-    )
-}
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=os.getenv('DATABASE_URL', 'mysql://rama9305:Rama%40123@rama9305.mysql.pythonanywhere-services.com:3306/rama9305$default')
+#     )
+# }
+
+GOOGLE_CLIENT_ID = '499624582154-mjuj90eo98mgf361219ttnqk47j26jo0.apps.googleusercontent.com'
+GOOGLE_CLIENT_SECRET = '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'
+GOOGLE_REDIRECT_URI = 'https://rama9305.pythonanywhere.com/appointment/oauth2callback/'
+
+
+if os.getenv('DJANGO_DEVELOPMENT') == 'True':
+    os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+
+
+
 

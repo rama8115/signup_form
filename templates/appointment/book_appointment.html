@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.css">
+    <link rel="stylesheet" href="{% static 'appointment/book_appointment.css' %}">
+</head>
+<body>
+    <div class="d-flex flex-row-reverse">
+        <div class="p-2">
+            <a href="/users/logout" class="btn btn-primary">Logout</a>
+        </div>
+    </div>
+    <div class="container">
+        <h2>Book Appointment with Dr. {{ doctor.first_name }} {{ doctor.last_name }}</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary btn-block mt-4">Confirm</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Date picker
+            $("#id_date").flatpickr({
+                dateFormat: 'Y-m-d',
+                minDate: "today"
+            });
+
+            // Time picker
+            $("#id_start_time").flatpickr({
+                enableTime: true,
+                noCalendar: true,
+                dateFormat: "H:i",
+                time_24hr: true,
+                minuteIncrement: 15
+            });
+        });
+    </script>
+</body>
+</html>
