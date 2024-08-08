@@ -13,7 +13,7 @@ from google_auth_oauthlib.flow import Flow
 
 
 CREDENTIALS_FILE_PATH = os.path.join(os.path.dirname(__file__), 'credentials.json')
-CLIENT_SECRET_FILE_PATH = os.path.join(os.path.dirname(__file__), 'client_secret.json')
+CLIENT_SECRET_FILE_PATH = os.path.join(os.path.dirname(__file__), 'client.json')
 
 def oauth2callback(request):
     SCOPES = ['https://www.googleapis.com/auth/calendar']
